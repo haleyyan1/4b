@@ -16,7 +16,14 @@ public class Address {
     public Address(String ad){
         String add=ad;
         if (ad.indexOf("Apt")!=-1) {
-            
+            String apt = ad;
+            int apa=apt.indexOf("A");
+            apt=apt.substring(apa);
+            int end=apt.indexOf(",");
+            apNum=apt.substring(0,end);
+        }
+        else {
+            apNum="";
         }
         int number= add.indexOf(" ");
         streetNumber=add.substring(0,number);
@@ -30,5 +37,25 @@ public class Address {
         int sta=add.indexOf(" ");
         state=add.substring(0,sta);
         zipCode=add.substring(sta+1);
+    }
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+    public String getStreetName() {
+        return streetName;
+    }
+    public String getApNum() {
+        return apNum;
+    }
+    public String getCity() {
+        return city;
+    }
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    @Override
+    public String toString() {
+        return streetNumber+" "+streetName+" "+apNum+", "city+state+zipCode;
     }
 }
